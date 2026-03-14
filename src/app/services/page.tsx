@@ -1,6 +1,3 @@
-"use client";
-
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronRight, HardHat, Ruler, Wrench, Cog, Home, Building2, Hammer } from "lucide-react";
@@ -95,12 +92,10 @@ export default function ServicesPage() {
                 className="bg-white rounded-lg overflow-hidden shadow-card hover:shadow-hover transition-all duration-300 border border-gray-100 group"
               >
                 <div className="aspect-video relative overflow-hidden">
-                  <Image
+                  <img
                     src={service.image.src}
-                    alt={service.title}
-                    fill
+                    alt={service.title} style={{ width: "100%", height: "100%", objectFit: "cover" }}
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-300" />
                 </div>

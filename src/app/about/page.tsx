@@ -1,6 +1,3 @@
-"use client";
-
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { Award, Users, HardHat, Target } from "lucide-react";
 import { images } from "@/config/images";
@@ -80,7 +77,7 @@ export default function AboutPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative"
             >
-              <Image
+              <img
                 src={images.about.src}
                 alt={images.about.alt}
                 width={600}
@@ -157,12 +154,10 @@ export default function AboutPage() {
                 className="bg-slate-50 rounded-lg overflow-hidden shadow-sm group"
               >
                 <div className="aspect-[4/5] bg-gray-200 overflow-hidden">
-                  <Image
+                  <img
                     src={images["team-1"].src}
-                    alt={member.name}
-                    fill
+                    alt={member.name} style={{ width: "100%", height: "100%", objectFit: "cover" }}
                     className="object-cover transition-transform duration-500 group-hover:scale-105 grayscale group-hover:grayscale-0"
-                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
                 <div className="p-6">

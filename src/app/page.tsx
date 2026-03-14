@@ -1,6 +1,3 @@
-"use client";
-
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, HardHat, Ruler, Wrench, ShieldCheck, ChevronRight } from "lucide-react";
@@ -123,13 +120,10 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center bg-primary overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image
+          <img
             src={images.hero.src}
-            alt={images.hero.alt}
-            fill
-            priority
+            alt={images.hero.alt} style={{ width: "100%", height: "100%", objectFit: "cover" }}
             className="object-cover opacity-50"
-            sizes="100vw"
           />
         </div>
         
@@ -247,12 +241,10 @@ export default function Home() {
                 className="group relative overflow-hidden rounded-xl shadow-md cursor-pointer"
               >
                 <div className="aspect-[4/3] relative overflow-hidden">
-                  <Image
+                  <img
                     src={project.image.src}
-                    alt={project.image.alt}
-                    fill
+                    alt={project.image.alt} style={{ width: "100%", height: "100%", objectFit: "cover" }}
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent opacity-90 transition-opacity duration-300" />
                   <div className="absolute bottom-0 left-0 p-8 text-white transform transition-transform duration-300 group-hover:-translate-y-2">
@@ -312,7 +304,7 @@ export default function Home() {
               viewport={{ once: true }}
               className="relative"
             >
-              <Image
+              <img
                 src={images.about.src}
                 alt={images.about.alt}
                 width={600}
@@ -353,7 +345,7 @@ export default function Home() {
               >
                 <div className="text-accent mb-4 flex gap-1">
                   {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg key={i} className="w-5 h-5 style={{ width: "100%", height: "100%", objectFit: "cover" }}-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                   ))}
                 </div>
                 <p className="text-text-muted mb-6 italic">&quot;{testimonial.text}&quot;</p>
@@ -370,7 +362,7 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-24 bg-secondary relative">
         <div className="absolute inset-0 opacity-10">
-           <Image src={images.cta.src} alt={images.cta.alt} fill className="object-cover" />
+           <img src={images.cta.src} alt={images.cta.alt} style={{ width: "100%", height: "100%", objectFit: "cover" }} className="object-cover" />
         </div>
         <div className="container-custom relative z-10 text-center px-6">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Break Ground?</h2>
