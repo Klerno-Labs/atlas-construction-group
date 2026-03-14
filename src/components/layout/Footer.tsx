@@ -1,40 +1,57 @@
+"use client";
+
 import Link from "next/link";
-import { MapPin, Mail, Phone, Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { ArrowUp, MapPin, Mail, Phone, Linkedin, Twitter, Instagram } from "lucide-react";
 import { siteConfig } from "@/config/site";
-import { images } from "@/config/images";
+import { useState, useEffect } from "react";
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const checkScrollTop = () => {
+      if (!showScrollTop && window.scrollY > 300) {
+        setShowScrollTop(true);
+      } else if (showScrollTop && window.scrollY <= 300) {
+        setShowScrollTop(false);
+      }
+    };
+    window.addEventListener("scroll", checkScrollTop);
+    return () => window.removeEventListener("scroll", checkScrollTop);
+  }, [showScrollTop]);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
-    <footer className="bg-primary text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Col 1: Brand */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="bg-accent text-primary p-1.5 rounded-sm">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 21h18" />
-                  <path d="M5 21V7l8-4 8 4v14" />
-                  <path d="M8 21v-2a2 2 0 0 1 4 0v2" />
-                </svg>
-              </div>
-              <span className="text-xl font-heading font-bold">ATLAS</span>
-            </div>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Building Houston's future with integrity, precision, and unmatched quality. 
-              Your vision, our expertise.
+    <footer className="bg-primary text-white pt-16 pb-8">
+      <div className="container-custom">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+          {/* About */}
+          <div>
+            <h3 className="text-xl font-bold mb-4 text-accent">ATLAS CONSTRUCTION</h3>
+            <p className="text-gray-400 mb-6 leading-relaxed">
+              Building Houston&apos;s future with integrity, precision, and unwavering commitment to quality. From commercial complexes to dream homes.
             </p>
-            <div className="flex gap-4 pt-2">
+            <div className="flex gap-4">
               <a 
-                href={siteConfig.links.facebook} 
+                href={siteConfig.links.linkedin} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                aria-label="Visit our Facebook page"
+                aria-label="Visit our LinkedIn page"
                 className="text-gray-400 hover:text-accent transition-colors"
               >
-                <Facebook size={20} />
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a 
+                href={siteConfig.links.twitter} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Visit our Twitter page"
+                className="text-gray-400 hover:text-accent transition-colors"
+              >
+                <Twitter className="w-5 h-5" />
               </a>
               <a 
                 href={siteConfig.links.instagram} 
@@ -43,109 +60,80 @@ export function Footer() {
                 aria-label="Visit our Instagram page"
                 className="text-gray-400 hover:text-accent transition-colors"
               >
-                <Instagram size={20} />
-              </a>
-              <a 
-                href={siteConfig.links.linkedin} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                aria-label="Visit our LinkedIn page"
-                className="text-gray-400 hover:text-accent transition-colors"
-              >
-                <Linkedin size={20} />
+                <Instagram className="w-5 h-5" />
               </a>
             </div>
           </div>
 
-          {/* Col 2: Quick Links */}
+          {/* Quick Links */}
           <div>
-            <h3 className="font-heading font-bold text-lg mb-6">Company</h3>
+            <h4 className="text-lg font-bold mb-4 uppercase tracking-wider">Quick Links</h4>
             <ul className="space-y-3">
-              {siteConfig.nav.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="text-gray-400 hover:text-white transition-colors text-sm">
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Terms of Service
-                </Link>
-              </li>
+              <li><Link href="/" className="text-gray-400 hover:text-accent transition-colors">Home</Link></li>
+              <li><Link href="/about" className="text-gray-400 hover:text-accent transition-colors">About Us</Link></li>
+              <li><Link href="/services" className="text-gray-400 hover:text-accent transition-colors">Services</Link></li>
+              <li><Link href="/#projects" className="text-gray-400 hover:text-accent transition-colors">Projects</Link></li>
+              <li><Link href="/#contact" className="text-gray-400 hover:text-accent transition-colors">Contact</Link></li>
             </ul>
           </div>
 
-          {/* Col 3: Contact Info */}
+          {/* Services */}
           <div>
-            <h3 className="font-heading font-bold text-lg mb-6">Contact Us</h3>
+            <h4 className="text-lg font-bold mb-4 uppercase tracking-wider">Services</h4>
+            <ul className="space-y-3">
+              <li><span className="text-gray-400">Commercial Construction</span></li>
+              <li><span className="text-gray-400">Residential Renovation</span></li>
+              <li><span className="text-gray-400">Project Management</span></li>
+              <li><span className="text-gray-400">Design-Build</span></li>
+              <li><span className="text-gray-400">Industrial Services</span></li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="text-lg font-bold mb-4 uppercase tracking-wider">Contact Us</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="text-accent mt-1 flex-shrink-0" size={18} />
-                <span className="text-gray-400 text-sm leading-relaxed">
-                  {siteConfig.contact.address}
-                </span>
+                <MapPin className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
+                <span className="text-gray-400">{siteConfig.contact.address}</span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="text-accent flex-shrink-0" size={18} />
-                <a 
-                  href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`} 
-                  className="text-gray-400 hover:text-white transition-colors text-sm"
-                >
+                <Phone className="w-5 h-5 text-accent flex-shrink-0" />
+                <a href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`} className="text-gray-400 hover:text-accent transition-colors">
                   {siteConfig.contact.phone}
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="text-accent flex-shrink-0" size={18} />
-                <a 
-                  href={`mailto:${siteConfig.contact.email}`} 
-                  className="text-gray-400 hover:text-white transition-colors text-sm"
-                >
+                <Mail className="w-5 h-5 text-accent flex-shrink-0" />
+                <a href={`mailto:${siteConfig.contact.email}`} className="text-gray-400 hover:text-accent transition-colors">
                   {siteConfig.contact.email}
                 </a>
               </li>
             </ul>
           </div>
-
-          {/* Col 4: Newsletter / CTA */}
-          <div>
-            <h3 className="font-heading font-bold text-lg mb-6">Get Updates</h3>
-            <p className="text-gray-400 text-sm mb-4">
-              Subscribe for industry insights and company news.
-            </p>
-            <form className="space-y-2">
-              <input 
-                type="email" 
-                placeholder="Your email address" 
-                className="w-full bg-white/10 border border-white/20 rounded px-4 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-accent transition-colors"
-              />
-              <button className="w-full bg-accent text-primary font-bold text-sm py-2 hover:bg-white transition-colors rounded">
-                Subscribe
-              </button>
-            </form>
-          </div>
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/10 bg-[#06152a]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-500 text-sm">
-            &copy; {currentYear} {siteConfig.name}. All rights reserved.
+            &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
-          <div className="flex items-center gap-2 text-xs font-bold text-accent uppercase tracking-wider">
-             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-             </svg>
-             Safety First Culture
+          <div className="flex gap-6 text-sm">
+            <Link href="/privacy" className="text-gray-500 hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="text-gray-500 hover:text-white transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
+
+      {/* Scroll to top */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-40 p-3 bg-accent text-primary rounded-full shadow-lg hover:bg-white transition-all duration-300 animate-bounce"
+          aria-label="Scroll to top"
+        >
+          <ArrowUp className="w-6 h-6" />
+        </button>
+      )}
     </footer>
   );
 }

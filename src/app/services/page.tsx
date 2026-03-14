@@ -1,123 +1,136 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Ruler, Paintbrush, Hammer, Truck, Building, HomeIcon } from "lucide-react";
 import { motion } from "framer-motion";
+import { ChevronRight, HardHat, Ruler, Wrench, Cog, Home, Building2, Hammer } from "lucide-react";
 import { images } from "@/config/images";
-import { Button } from "@/components/ui/Button";
 import { ContactSection } from "@/components/sections/ContactSection";
 
 export const metadata = {
-  title: "Our Services",
-  description: "Comprehensive construction services including commercial, residential, and industrial projects in Houston.",
+  title: "Services | Atlas Construction Group",
+  description: "Explore Atlas Construction Group's full range of services including commercial, residential, and industrial construction in Houston.",
 };
 
-const services = [
-  {
-    id: "commercial",
-    title: "Commercial Construction",
-    icon: <Building />,
-    desc: "Ground-up construction for office buildings, retail spaces, and mixed-use developments.",
-    image: "service-1",
-    details: [
-      "Steel Erection & Framing",
-      "Concrete Foundations & Flatwork",
-      "Office Build-outs & TI",
-      "Retail Storefronts",
-      "ADA Compliance Upgrades"
-    ]
-  },
-  {
-    id: "residential",
-    title: "Residential Remodeling",
-    icon: <HomeIcon />,
-    desc: "High-end renovations for kitchens, bathrooms, and whole-home remodels.",
-    image: "service-2",
-    details: [
-      "Custom Kitchen Remodels",
-      "Luxury Bathroom Renovations",
-      "Room Additions & ADUs",
-      "Outdoor Living Spaces",
-      "Historical Restorations"
-    ]
-  },
-  {
-    id: "industrial",
-    title: "Industrial Services",
-    icon: <Truck />,
-    desc: "Heavy-duty construction for warehouses, manufacturing plants, and logistics centers.",
-    image: "service-3",
-    details: [
-      "Warehouse Structural Repair",
-      "Equipment Foundation Pours",
-      "Loading Dock Installation",
-      "Facility Paving",
-      "Safety Railing Systems"
-    ]
-  }
-];
-
 export default function ServicesPage() {
+  const services = [
+    {
+      icon: Building2,
+      title: "Commercial Construction",
+      description: "Full-scale commercial construction services including office buildings, retail centers, and hospitality venues. We handle everything from site selection to final inspection.",
+      features: ["Office Build-outs", "Retail Centers", "Hospitality", "Tenant Improvements"],
+      image: images["service-1"]
+    },
+    {
+      icon: Home,
+      title: "Residential Construction",
+      description: "Custom home building and high-end renovations. We bring architectural vision to life with meticulous attention to detail and premium materials.",
+      features: ["Custom Homes", "Kitchen & Bath Remodel", "Home Additions", "Outdoor Living"],
+      image: images["service-2"]
+    },
+    {
+      icon: Cog,
+      title: "Industrial Services",
+      description: "Heavy industrial construction requiring specialized knowledge of safety regulations, equipment, and operational workflows.",
+      features: ["Warehousing", "Manufacturing Plants", "Distribution Centers", "Infrastructure"],
+      image: images["service-3"]
+    },
+    {
+      icon: Hammer,
+      title: "Design-Build",
+      description: "A unified workflow where design and construction teams work together under one contract. This method reduces risk and delivers projects faster.",
+      features: ["Single Point of Contact", "Cost Efficiency", "Faster Delivery", "Collaborative Process"],
+      image: images["gallery-1"]
+    },
+    {
+      icon: Ruler,
+      title: "Project Management",
+      description: "Comprehensive oversight for your construction project. We manage schedules, budgets, subcontractors, and quality control.",
+      features: ["Scheduling", "Budget Control", "Subcontractor Management", "Quality Assurance"],
+      image: images["gallery-2"]
+    },
+    {
+      icon: Wrench,
+      title: "Renovation & Retrofitting",
+      description: "Updating existing structures for modern efficiency, aesthetics, and code compliance while preserving historical character where desired.",
+      features: ["Structural Updates", "Energy Efficiency", "Seismic Retrofitting", "Historic Preservation"],
+      image: images["gallery-3"]
+    }
+  ];
+
   return (
     <>
       {/* Hero */}
-      <section className="pt-20 pb-16 bg-gray-50 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-heading font-bold text-primary mb-6">
-            Our Expertise
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            From single-family homes to industrial complexes, we have the manpower, machinery, and experience to execute projects of any scale.
-          </p>
+      <section className="pt-32 pb-16 bg-slate-50 border-b border-gray-200">
+        <div className="container-custom text-center">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-5xl font-bold text-text-heading mb-6"
+          >
+            Our Services
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-xl text-text-muted max-w-3xl mx-auto"
+          >
+            From ground-up construction to intricate renovations, Atlas Construction Group offers a complete suite of building services tailored to Houston&apos;s diverse market.
+          </motion.p>
         </div>
       </section>
 
-      {/* Services List */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-24">
+      {/* Services Grid */}
+      <section className="py-24 bg-white">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {services.map((service, index) => (
               <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 30 }}
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-lg overflow-hidden shadow-card hover:shadow-hover transition-all duration-300 border border-gray-100 group"
               >
-                <div className="order-2 lg:order-1">
+                <div className="aspect-video relative overflow-hidden">
+                  <Image
+                    src={service.image.src}
+                    alt={service.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-300" />
+                </div>
+                <div className="p-8">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="p-3 bg-secondary/10 text-secondary rounded-lg">
-                      {service.icon}
+                    <div className="p-2 bg-secondary/10 text-secondary rounded-sm">
+                      <service.icon className="w-6 h-6" />
                     </div>
-                    <h2 className="text-3xl font-heading font-bold text-primary">
-                      {service.title}
-                    </h2>
+                    <h2 className="text-2xl font-bold text-text-heading">{service.title}</h2>
                   </div>
-                  <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                    {service.desc}
+                  <p className="text-text-muted mb-6 leading-relaxed">
+                    {service.description}
                   </p>
                   
-                  <h3 className="text-sm font-bold text-secondary uppercase tracking-wider mb-4">Capabilities Include:</h3>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    {service.details.map((detail, i) => (
-                      <li key={i} className="flex items-center gap-2 text-gray-700">
-                        <ChevronRight size={16} className="text-accent" />
-                        {detail}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Button asChild>
-                    <Link href="/#contact">Get a Quote for {service.title}</Link>
-                  </Button>
-                </div>
-                <div className="order-1 lg:order-2">
-                  <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
-                    <img
-                      src={images[service.image as keyof typeof images].src}
-                      alt={images[service.image as keyof typeof images].alt}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                    />
+                  <div className="mb-8">
+                    <h4 className="text-sm font-bold text-primary uppercase tracking-wider mb-3">Capabilities</h4>
+                    <ul className="grid grid-cols-2 gap-2">
+                      {service.features.map((feature, i) => (
+                        <li key={i} className="flex items-center text-sm text-text-muted">
+                          <ChevronRight className="w-4 h-4 text-accent mr-2" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
+
+                  <Link 
+                    href="#contact"
+                    className="inline-flex items-center text-secondary font-bold hover:text-accent transition-colors group/link"
+                  >
+                    Request Quote for {service.title} <ChevronRight className="w-4 h-4 ml-2 group-hover/link:translate-x-1 transition-transform" />
+                  </Link>
                 </div>
               </motion.div>
             ))}
@@ -126,47 +139,42 @@ export default function ServicesPage() {
       </section>
 
       {/* Process Section */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">The Atlas Process</h2>
-            <p className="text-gray-600 text-lg">How we ensure your project stays on time and on budget.</p>
+      <section className="py-24 bg-primary text-white">
+        <div className="container-custom">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl font-bold mb-4">Our Process</h2>
+            <p className="text-xl text-blue-200">
+              A proven methodology that ensures efficiency, quality, and peace of mind.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { title: "Consultation", desc: "We meet on-site to discuss your vision and assess feasibility.", icon: "01" },
-              { title: "Design & Plan", desc: "Our architects create detailed blueprints and material lists.", icon: "02" },
-              { title: "Construction", desc: "Permits are pulled, ground is broken, and work begins.", icon: "03" },
-              { title: "Walkthrough", desc: "Final inspection ensures every detail meets our standards.", icon: "04" }
-            ].map((step, idx) => (
-              <div key={idx} className="relative">
-                <div className="text-6xl font-heading font-bold text-gray-200 absolute -top-4 -left-2 -z-10">
-                  {step.icon}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+            {["Consultation", "Design & Planning", "Construction", "Walkthrough"].map((step, index) => (
+              <div key={index} className="relative text-center md:text-left">
+                <div className="text-6xl font-bold text-white/10 absolute -top-8 -left-2 md:-left-4 z-0">
+                  0{index + 1}
                 </div>
-                <h3 className="text-xl font-bold text-primary mb-2">{step.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{step.desc}</p>
+                <div className="relative z-10 pl-0 md:pl-8 pt-8">
+                  <h3 className="text-2xl font-bold text-accent mb-3">{step}</h3>
+                  <p className="text-blue-100 text-sm leading-relaxed">
+                    {index === 0 && "We meet to understand your vision, budget, and timeline, providing an initial feasibility assessment."}
+                    {index === 1 && "Our architects and engineers create detailed blueprints, obtain permits, and finalize materials."}
+                    {index === 2 && "Construction begins with regular updates, strict safety protocols, and quality control checkpoints."}
+                    {index === 3 && "We conduct a final inspection together, ensuring every detail meets our high standards before handover."}
+                  </p>
+                </div>
+                {index < 3 && (
+                  <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-20">
+                    <ChevronRight className="w-8 h-8 text-white/20" />
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-primary">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-heading font-bold text-white mb-6">
-            Unsure What You Need?
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Our team specializes in assessing project requirements. Contact us for a professional consultation.
-          </p>
-          <Button asChild variant="accent" size="lg">
-            <Link href="/#contact">Talk to a Specialist</Link>
-          </Button>
-        </div>
-      </section>
-
+      {/* Contact Section */}
       <ContactSection />
     </>
   );

@@ -2,77 +2,60 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
 
 const stats = [
-  { value: 25, label: "Years Experience", suffix: "+" },
-  { value: 500, label: "Projects Completed", suffix: "+" },
-  { value: 100, label: "Safety Record", suffix: "%" },
-  { value: 35, label: "Expert Craftsmen", suffix: "" },
+  { value: 25, suffix: "+", label: "Years Experience" },
+  { value: 500, suffix: "+", label: "Projects Completed" },
+  { value: 100, suffix: "%", label: "Safety Record" },
+  { value: 50, suffix: "M", label: "Sq Ft Built" },
 ];
 
-function Counter({ value, suffix }: { value: number; suffix: string }) {
-  const [count, setCount] = useState(0);
-  const nodeRef = useRef<HTMLDivElement>(null);
-  const isInView = useState(false);
+function AnimatedStat({ value, suffix, label }: { value: number; suffix: string; label: string }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          let start = 0;
-          const end = value;
-          const duration = 2000;
-          const incrementTime = duration / end;
-          
-          const timer = setInterval(() => {
-            start += 1;
-            setCount(start);
-            if (start === end) clearInterval(timer);
-          }, incrementTime);
-          
-          observer.disconnect();
+    if (isInView) {
+      const duration = 2000; // 2 seconds
+      const steps = 60;
+      const stepValue = value / steps;
+      let step = 0;
+
+      const timer = setInterval(() => {
+        step++;
+        if (step > steps) {
+          clearInterval(timer);
+          setCurrent(value);
+        } else {
+          setCurrent(Math.floor(stepValue * step));
         }
-      },
-      { threshold: 0.5 }
-    );
+      }, duration / steps);
 
-    if (nodeRef.current) {
-      observer.observe(nodeRef.current);
+      return () => clearInterval(timer);
     }
-
-    return () => {
-      if (nodeRef.current) observer.unobserve(nodeRef.current);
-    };
-  }, [value]);
+  }, [isInView, value]);
 
   return (
-    <span ref={nodeRef}>
-      {count}{suffix}
-    </span>
+    <div ref={ref} className="text-center md:text-left">
+      <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+        {current}{suffix}
+      </div>
+      <div className="text-sm uppercase tracking-wider text-accent font-medium">
+        {label}
+      </div>
+    </div>
   );
 }
 
 export function StatsStrip() {
   return (
     <section className="bg-primary py-16 border-y border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="container-custom">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="text-center"
-            >
-              <div className="text-4xl md:text-5xl font-heading font-bold text-accent mb-2">
-                <Counter value={stat.value} suffix={stat.suffix} />
-              </div>
-              <div className="text-sm md:text-base font-medium text-gray-300 uppercase tracking-wider">
-                {stat.label}
-              </div>
-            </motion.div>
+            <AnimatedStat key={index} {...stat} />
           ))}
         </div>
       </div>
