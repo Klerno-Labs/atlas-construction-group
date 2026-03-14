@@ -9,100 +9,100 @@
 // to edit to swap any image on the entire website.
 
 export const images = {
-  // Homepage hero banner — the first image visitors see — REPLACE with a real Unsplash URL matching: "Modern office workspace with natural light"
+  // Homepage hero banner — The first image visitors see — Modern construction site at sunset
   "hero": {
-    src: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop",
-    alt: "Modern construction site crane against blue sky",
-    width: 1200,
-    height: 800,
+    src: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop",
+    alt: "Modern construction site crane against sunset sky",
+    width: 2070,
+    height: 1380,
   },
 
-  // Alternative hero image (used on inner pages or as fallback) — REPLACE with a real Unsplash URL matching: "Professional team collaborating in bright office"
+  // Alternative hero image — Skyscraper architecture detail
   "hero-alt": {
-    src: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
-    alt: "Professional team collaborating in bright office",
-    width: 1200,
-    height: 800,
+    src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
+    alt: "Modern glass skyscraper architecture detail",
+    width: 2070,
+    height: 1380,
   },
 
-  // About page or About section on homepage — REPLACE with a real Unsplash URL matching: "Business professionals in modern meeting room"
+  // About page — Construction team reviewing blueprints on site
   "about": {
-    src: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=2070&auto=format&fit=crop",
-    alt: "Business professionals in modern meeting room",
-    width: 1200,
-    height: 800,
+    src: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop",
+    alt: "Construction team reviewing blueprints on site",
+    width: 2070,
+    height: 1380,
   },
 
-  // First service card image — REPLACE with a real Unsplash URL matching: "Creative professionals working together"
+  // Service 1: General Contracting — Foundation pouring
   "service-1": {
-    src: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2068&auto=format&fit=crop",
-    alt: "Construction workers reviewing blueprints",
-    width: 1200,
-    height: 800,
+    src: "https://images.unsplash.com/photo-1590496793929-36417d3117de?q=80&w=2069&auto=format&fit=crop",
+    alt: "Concrete foundation pour at residential site",
+    width: 2069,
+    height: 1379,
   },
 
-  // Second service card image — REPLACE with a real Unsplash URL matching: "Data analytics dashboard on screen"
+  // Service 2: Commercial — Steel beams structure
   "service-2": {
-    src: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=1974&auto=format&fit=crop",
-    alt: "Architect working on detailed blueprints",
-    width: 1200,
-    height: 800,
+    src: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=1965&auto=format&fit=crop",
+    alt: "Steel beam structure of commercial building",
+    width: 1965,
+    height: 1474,
   },
 
-  // Third service card image — REPLACE with a real Unsplash URL matching: "Team workshop and brainstorming session"
+  // Service 3: Renovation — Interior framing
   "service-3": {
-    src: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=2070&auto=format&fit=crop",
-    alt: "Heavy machinery at industrial site",
-    width: 1200,
-    height: 800,
+    src: "https://images.unsplash.com/photo-1581578731117-104f2a8d3e7e?q=80&w=2070&auto=format&fit=crop",
+    alt: "Interior framing and renovation work",
+    width: 2070,
+    height: 1380,
   },
 
-  // Gallery image 1 — REPLACE with a real Unsplash URL matching: "Professional handshake in business setting"
+  // Gallery 1: Finished Commercial Building
   "gallery-1": {
-    src: "https://images.unsplash.com/photo-1590644365607-8c2751f8d654?q=80&w=2070&auto=format&fit=crop",
-    alt: "Modern commercial building exterior",
-    width: 1200,
-    height: 800,
+    src: "https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2070&auto=format&fit=crop",
+    alt: "Finished commercial office building exterior",
+    width: 2070,
+    height: 1380,
   },
 
-  // Gallery image 2 — REPLACE with a real Unsplash URL matching: "Modern conference room with city view"
+  // Gallery 2: Luxury Residential Home
   "gallery-2": {
-    src: "https://images.unsplash.com/photo-1590496793929-36417d3117de?q=80&w=2070&auto=format&fit=crop",
-    alt: "Luxury residential interior renovation",
-    width: 1200,
-    height: 800,
+    src: "https://images.unsplash.com/photo-1600596542815-e32c2159f728?q=80&w=2072&auto=format&fit=crop",
+    alt: "Modern luxury residential home exterior",
+    width: 2072,
+    height: 1381,
   },
 
-  // Team member photo — REPLACE with a real Unsplash URL matching: "Diverse team celebrating success"
+  // Team Member 1: Project Manager
   "team-1": {
-    src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop",
-    alt: "Construction project manager portrait",
-    width: 1200,
-    height: 800,
+    src: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1887&auto=format&fit=crop",
+    alt: "Portrait of Senior Project Manager",
+    width: 1887,
+    height: 2360,
   },
 
-  // Gallery image 3 — REPLACE with a real Unsplash URL matching: "Technology workspace with multiple screens"
+  // Gallery 3: Construction Site Safety Meeting
   "gallery-3": {
-    src: "https://images.unsplash.com/photo-1594924478110-493e62f4a238?q=80&w=2070&auto=format&fit=crop",
-    alt: "Infrastructure bridge construction",
-    width: 1200,
-    height: 800,
-  },
-
-  // Call-to-action section background — REPLACE with a real Unsplash URL matching: "Innovation and technology concept"
-  "cta": {
     src: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2070&auto=format&fit=crop",
-    alt: "Successful business team meeting",
-    width: 1200,
-    height: 800,
+    alt: "Construction safety meeting on site",
+    width: 2070,
+    height: 1380,
   },
 
-  // Testimonials section background or decoration — REPLACE with a real Unsplash URL matching: "Professional business environment"
+  // CTA Section Background — Blueprint overlay or site
+  "cta": {
+    src: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2070&auto=format&fit=crop",
+    alt: "Architectural blueprints and tools on desk",
+    width: 2070,
+    height: 1380,
+  },
+
+  // Testimonial Background — Clean office interior
   "testimonial-bg": {
-    src: "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?q=80&w=2071&auto=format&fit=crop",
-    alt: "Professional business environment",
-    width: 1200,
-    height: 800,
+    src: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop",
+    alt: "Modern clean office interior",
+    width: 2070,
+    height: 1380,
   },
 } as const;
 

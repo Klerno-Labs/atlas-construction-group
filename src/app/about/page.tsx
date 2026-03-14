@@ -1,189 +1,293 @@
-import { motion } from "framer-motion";
-import { Award, Users, HardHat, Target } from "lucide-react";
+import Image from "next/image";
+import { HardHat, Users, Award, Zap } from "lucide-react";
 import { images } from "@/config/images";
-import { StatsStrip } from "@/components/sections/StatsStrip";
-import { siteConfig } from "@/config/site";
 
 export const metadata = {
   title: "About Us | Atlas Construction Group",
-  description: "Learn about Atlas Construction Group's history, values, and commitment to building excellence in Houston since 1999.",
+  description: "Learn about Atlas Construction Group's history, safety records, and our commitment to building excellence in Texas.",
 };
 
 export default function AboutPage() {
-  const values = [
-    {
-      icon: Target,
-      title: "Integrity",
-      description: "We build trust through transparent communication, honest pricing, and delivering on our promises every single time."
-    },
-    {
-      icon: Users,
-      title: "Collaboration",
-      description: "Construction is a team sport. We work closely with architects, owners, and subcontractors to ensure success."
-    },
-    {
-      icon: Award,
-      title: "Excellence",
-      description: "We refuse to settle for 'good enough.' Our rigorous quality control processes ensure superior craftsmanship."
-    },
-    {
-      icon: HardHat,
-      title: "Safety",
-      description: "Safety is not optional. We maintain an EMR of 0.85 and adhere to the strictest OSHA regulations on every site."
-    }
-  ];
-
-  const team = [
-    {
-      name: "Robert Martinez",
-      role: "Founder & CEO",
-      bio: "With 30 years in the industry, Robert founded Atlas on the principles of quality and integrity."
-    },
-    {
-      name: "Jennifer Chen",
-      role: "Director of Operations",
-      bio: "Jennifer ensures our projects run smoothly, on time, and within budget through meticulous planning."
-    },
-    {
-      name: "Marcus Thorne",
-      role: "Lead Superintendent",
-      bio: "Marcus oversees on-site operations, maintaining our high standards for safety and craftsmanship."
-    }
-  ];
-
   return (
     <>
-      {/* Hero */}
-      <section className="pt-32 pb-20 bg-white">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h1 className="text-5xl font-bold text-text-heading mb-6">Building Legacy Since 1999</h1>
+      {/* HERO SPLIT */}
+      <section className="relative bg-white pt-20 overflow-hidden">
+        <div className="container mx-auto px-6 py-16 lg:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="order-2 lg:order-1 animate-fade-up">
+              <span className="text-secondary font-bold uppercase tracking-wider text-sm mb-4 block">
+                Who We Are
+              </span>
+              <h1 className="font-heading text-4xl md:text-5xl font-bold text-primary-900 mb-6 leading-tight">
+                Building Trust <br /> <span className="text-secondary">Since 1998.</span>
+              </h1>
               <p className="text-lg text-text-muted mb-6 leading-relaxed">
-                Atlas Construction Group began with a simple mission: to provide Houston with a construction partner that prioritizes quality over quick profits. Over two decades later, we have become the region&apos;s most trusted name in commercial and residential construction.
+                Founded in Houston, Atlas Construction Group started as a small
+                family operation with a simple mission: to treat every project
+                as if it were our own home. Over two decades later, we have
+                evolved into one of Texas&apos;s most trusted general
+                contractors, but our core values remain unchanged.
               </p>
-              <p className="text-lg text-text-muted leading-relaxed">
-                From our first renovation project to major industrial complexes, our core values have remained unchanged. We believe in building relationships that last as long as the structures we create.
+              <p className="text-lg text-text-muted mb-8 leading-relaxed">
+                We specialize in complex commercial builds and high-end
+                residential construction, leveraging technology and time-honored
+                craftsmanship to deliver exceptional results.
               </p>
-            </motion.div>
+              
+              <div className="grid grid-cols-2 gap-6">
+                <div className="flex items-center gap-3">
+                  <Award className="w-8 h-8 text-accent" />
+                  <span className="font-bold text-primary-900">Award Winning</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Zap className="w-8 h-8 text-accent" />
+                  <span className="font-bold text-primary-900">Efficient Process</span>
+                </div>
+              </div>
+            </div>
             
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative"
-            >
-              <img
+            <div className="order-1 lg:order-2 relative h-[500px] w-full rounded-card overflow-hidden shadow-card">
+              <Image
                 src={images.about.src}
                 alt={images.about.alt}
-                width={600}
-                height={500}
-                className="rounded-lg shadow-xl"
+                fill
+                className="object-cover"
+                priority
               />
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Stats */}
-      <StatsStrip />
+      {/* STATS STRIP */}
+      <section className="bg-primary-900 py-16 border-t border-white/10">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/10">
+             <div>
+              <div className="text-4xl md:text-5xl font-heading font-bold text-accent mb-2">
+                25+
+              </div>
+              <div className="text-white/80 text-sm uppercase tracking-wider">
+                Years in Business
+              </div>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-heading font-bold text-accent mb-2">
+                $500M+
+              </div>
+              <div className="text-white/80 text-sm uppercase tracking-wider">
+                Project Value
+              </div>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-heading font-bold text-accent mb-2">
+                100%
+              </div>
+              <div className="text-white/80 text-sm uppercase tracking-wider">
+                Safety Record
+              </div>
+            </div>
+            <div>
+              <div className="text-4xl md:text-5xl font-heading font-bold text-accent mb-2">
+                5.0
+              </div>
+              <div className="text-white/80 text-sm uppercase tracking-wider">
+                Client Rating
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      {/* Values Section */}
-      <section className="py-24 bg-slate-50">
-        <div className="container-custom">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className="text-4xl font-bold text-text-heading mb-4">Our Core Values</h2>
+      {/* PROCESS ZIG-ZAG */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary-900 mb-4">
+              The Atlas Process
+            </h2>
             <p className="text-lg text-text-muted">
-              These principles guide every decision we make, from the bid process to the final walkthrough.
+              We believe transparency is the foundation of any successful
+              project. Here is how we bring your vision to life.
             </p>
-          </motion.div>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white p-8 rounded-lg shadow-sm text-center hover:shadow-lg transition-shadow"
-              >
-                <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                  <value.icon className="w-8 h-8" />
+          <div className="space-y-24">
+            {/* Step 1 */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div className="relative h-[400px] rounded-card overflow-hidden shadow-card order-2 md:order-1">
+                <Image
+                  src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=2070&auto=format&fit=crop"
+                  alt="Consultation meeting"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="order-1 md:order-2">
+                <div className="flex items-center gap-4 mb-4">
+                  <span className="bg-accent text-primary-900 font-heading font-bold text-2xl w-12 h-12 flex items-center justify-center rounded-lg">
+                    01
+                  </span>
+                  <h3 className="font-heading text-2xl font-bold text-primary-900">
+                    Discovery & Consultation
+                  </h3>
                 </div>
-                <h3 className="text-xl font-bold text-text-heading mb-3">{value.title}</h3>
-                <p className="text-text-muted">{value.description}</p>
-              </motion.div>
-            ))}
+                <p className="text-text-muted leading-relaxed mb-6">
+                  Every great project starts with a conversation. We meet to
+                  understand your goals, budget, and timeline. We perform a
+                  thorough site assessment and provide preliminary feasibility
+                  studies.
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-center gap-3 text-primary-900">
+                    <HardHat className="w-5 h-5 text-accent" /> Site Walkthrough
+                  </li>
+                  <li className="flex items-center gap-3 text-primary-900">
+                    <HardHat className="w-5 h-5 text-accent" /> Budget Estimation
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div className="relative h-[400px] rounded-card overflow-hidden shadow-card">
+                <Image
+                  src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2070&auto=format&fit=crop"
+                  alt="Planning phase"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <div className="flex items-center gap-4 mb-4">
+                  <span className="bg-accent text-primary-900 font-heading font-bold text-2xl w-12 h-12 flex items-center justify-center rounded-lg">
+                    02
+                  </span>
+                  <h3 className="font-heading text-2xl font-bold text-primary-900">
+                    Design & Pre-Construction
+                  </h3>
+                </div>
+                <p className="text-text-muted leading-relaxed mb-6">
+                  Our in-house architects and engineers collaborate with your
+                  design team to refine blueprints. We secure all necessary
+                  permits and establish a detailed project schedule.
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-center gap-3 text-primary-900">
+                    <Zap className="w-5 h-5 text-accent" /> Blueprints
+                  </li>
+                  <li className="flex items-center gap-3 text-primary-900">
+                    <Zap className="w-5 h-5 text-accent" /> Permitting
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div className="relative h-[400px] rounded-card overflow-hidden shadow-card order-2 md:order-1">
+                <Image
+                  src={images.service2.src}
+                  alt="Construction execution"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="order-1 md:order-2">
+                <div className="flex items-center gap-4 mb-4">
+                  <span className="bg-accent text-primary-900 font-heading font-bold text-2xl w-12 h-12 flex items-center justify-center rounded-lg">
+                    03
+                  </span>
+                  <h3 className="font-heading text-2xl font-bold text-primary-900">
+                    Construction & Execution
+                  </h3>
+                </div>
+                <p className="text-text-muted leading-relaxed mb-6">
+                  This is where the vision becomes reality. Our skilled craftsmen
+                  manage every aspect of the build, with daily site supervision
+                  and weekly progress reports to keep you informed.
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-center gap-3 text-primary-900">
+                    <Users className="w-5 h-5 text-accent" /> Daily Supervision
+                  </li>
+                  <li className="flex items-center gap-3 text-primary-900">
+                    <Users className="w-5 h-5 text-accent" } > Quality Control
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Team Section */}
+      {/* TEAM PREVIEW */}
       <section className="py-24 bg-white">
-        <div className="container-custom">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className="text-4xl font-bold text-text-heading mb-4">Leadership Team</h2>
-            <p className="text-lg text-text-muted">
-              Meet the experienced professionals dedicated to your project&apos;s success.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-slate-50 rounded-lg overflow-hidden shadow-sm group"
-              >
-                <div className="aspect-[4/5] bg-gray-200 overflow-hidden">
-                  <img
-                    src={images["team-1"].src}
-                    alt={member.name} style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                    className="object-cover transition-transform duration-500 group-hover:scale-105 grayscale group-hover:grayscale-0"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-text-heading">{member.name}</h3>
-                  <div className="text-accent font-bold text-sm mb-3 uppercase tracking-wider">{member.role}</div>
-                  <p className="text-text-muted text-sm">{member.bio}</p>
-                </div>
-              </motion.div>
-            ))}
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary-900 mb-4">
+              Leadership Team
+            </h2>
           </div>
-        </div>
-      </section>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* Member 1 */}
+            <div className="text-center">
+              <div className="relative w-full aspect-[3/4] rounded-card overflow-hidden mb-6 mx-auto max-w-[300px]">
+                <Image
+                  src={images.team1.src}
+                  alt={images.team1.alt}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <h3 className="font-heading text-xl font-bold text-primary-900">
+                Marcus Thorne
+              </h3>
+              <p className="text-secondary text-sm font-bold uppercase tracking-wider mb-3">
+                CEO & Founder
+              </p>
+              <p className="text-sm text-text-muted px-4">
+                30 years of construction management experience. Marcus oversees
+                all major commercial developments.
+              </p>
+            </div>
 
-      {/* CTA */}
-      <section className="py-24 bg-primary">
-        <div className="container-custom text-center px-6">
-          <h2 className="text-4xl font-bold text-white mb-6">Join the Atlas Family</h2>
-          <p className="text-xl text-blue-200 mb-8 max-w-2xl mx-auto">
-            Whether you need a general contractor for a massive development or a trusted partner for your dream home, we are ready to serve.
-          </p>
-          <a 
-            href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`}
-            className="inline-block px-10 py-4 bg-accent text-primary font-bold text-lg hover:bg-white transition-all duration-300 rounded-none"
-          >
-            Call {siteConfig.contact.phone}
-          </a>
+            {/* Member 2 */}
+             <div className="text-center">
+              <div className="relative w-full aspect-[3/4] rounded-card overflow-hidden mb-6 mx-auto max-w-[300px] bg-gray-100 flex items-center justify-center text-text-muted">
+                 <Users className="w-16 h-16 opacity-50" />
+              </div>
+              <h3 className="font-heading text-xl font-bold text-primary-900">
+                Sarah Jenkins
+              </h3>
+              <p className="text-secondary text-sm font-bold uppercase tracking-wider mb-3">
+                Director of Operations
+              </p>
+              <p className="text-sm text-text-muted px-4">
+                Sarah ensures every project meets Atlas standards for safety and
+                timeline efficiency.
+              </p>
+            </div>
+
+            {/* Member 3 */}
+             <div className="text-center">
+              <div className="relative w-full aspect-[3/4] rounded-card overflow-hidden mb-6 mx-auto max-w-[300px] bg-gray-100 flex items-center justify-center text-text-muted">
+                 <HardHat className="w-16 h-16 opacity-50" />
+              </div>
+              <h3 className="font-heading text-xl font-bold text-primary-900">
+                David Chen
+              </h3>
+              <p className="text-secondary text-sm font-bold uppercase tracking-wider mb-3">
+                Lead Architect
+              </p>
+              <p className="text-sm text-text-muted px-4">
+                David brings modern design principles to our residential
+                division, creating functional masterpieces.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </>
