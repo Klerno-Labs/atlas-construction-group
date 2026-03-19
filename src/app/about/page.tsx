@@ -188,7 +188,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="relative h-[400px] rounded-card overflow-hidden shadow-card order-2 md:order-1">
                 <Image
-                  src={images.service2.src}
+                  src={images['service-2'].src}
                   alt="Construction execution"
                   fill
                   className="object-cover"
@@ -236,8 +236,8 @@ export default function AboutPage() {
             <div className="text-center">
               <div className="relative w-full aspect-[3/4] rounded-card overflow-hidden mb-6 mx-auto max-w-[300px]">
                 <Image
-                  src={images.team1.src}
-                  alt={images.team1.alt}
+                  src={images['team-1'].src}
+                  alt={images['team-1'].alt}
                   fill
                   className="object-cover"
                 />
