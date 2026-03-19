@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { HardHat, Users, Award, Zap } from "lucide-react";
 import { images } from "@/config/images";
