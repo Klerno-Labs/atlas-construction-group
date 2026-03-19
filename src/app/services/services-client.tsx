@@ -6,6 +6,70 @@ import { images } from "@/config/images";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+
+const servicesData = [
+  {
+    id: 1,
+    title: "Commercial Construction",
+    icon: Building2,
+    description: "From office buildings and retail centers to warehouses and medical facilities, Atlas Construction Group delivers commercial projects on time and on budget. Our team manages every phase from pre-construction planning through final punch list.",
+    features: [
+      "Office & Retail Build-Outs",
+      "Warehouse & Industrial",
+      "Medical & Healthcare Facilities",
+      "Restaurant & Hospitality",
+      "Tenant Improvements",
+    ],
+    price: "$500K – $50M+",
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop",
+  },
+  {
+    id: 2,
+    title: "Residential Construction",
+    icon: Home,
+    description: "Custom luxury homes built to the highest standards. We work closely with homeowners and architects to bring dream homes to life, delivering exceptional craftsmanship and attention to detail at every stage.",
+    features: [
+      "Custom Home Building",
+      "Luxury Renovations",
+      "Home Additions",
+      "Kitchen & Bath Remodels",
+      "Outdoor Living Spaces",
+    ],
+    price: "$300K – $5M+",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop",
+  },
+  {
+    id: 3,
+    title: "General Contracting",
+    icon: Wrench,
+    description: "Full-service general contracting for projects of all sizes. We coordinate all subcontractors, suppliers, and stakeholders to ensure seamless project execution from groundbreaking to ribbon-cutting.",
+    features: [
+      "Project Management",
+      "Subcontractor Coordination",
+      "Value Engineering",
+      "Safety Compliance",
+      "Quality Control",
+    ],
+    price: "$100K – $20M+",
+    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2070&auto=format&fit=crop",
+  },
+  {
+    id: 4,
+    title: "Renovations & Remodeling",
+    icon: Hammer,
+    description: "Transform existing spaces with our expert renovation services. Whether it's a complete commercial overhaul or a residential refresh, our team delivers outstanding results that exceed expectations.",
+    features: [
+      "Commercial Renovations",
+      "Historic Restoration",
+      "Interior Remodeling",
+      "Structural Modifications",
+      "ADA Compliance Upgrades",
+    ],
+    price: "$50K – $10M+",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop",
+  },
+];
+
 export function ServicesContent() {
   const [openId, setOpenId] = useState<number | null>(1);
 
