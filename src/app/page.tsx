@@ -5,8 +5,7 @@ import { ArrowRight, HardHat, Building2, Home, Wrench, ShieldCheck, TrendingUp }
 import { Button } from "@/components/ui/button";
 import { images } from "@/config/images";
 import { siteConfig } from "@/config/site";
-import dynamic from "next/dynamic";
-const LeadGenForm = dynamic(() => import("@/components/sections/lead-gen-form").then(m => m.LeadGenForm), { ssr: false });
+import { LeadGenForm } from "@/components/sections/lead-gen-form";
 
 export const metadata: Metadata = {
   title: "Houston General Contractor | Commercial & Residential",
