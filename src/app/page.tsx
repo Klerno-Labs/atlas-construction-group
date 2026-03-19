@@ -188,8 +188,8 @@ export default function Home() {
             {/* Large Feature */}
             <div className="lg:col-span-2 relative group overflow-hidden rounded-card cursor-pointer h-[400px] lg:h-full">
               <Image
-                src={images.gallery.src}
-                alt={images.gallery.alt}
+                src={images['gallery-1'].src}
+                alt={images['gallery-1'].alt}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 66vw"
@@ -213,8 +213,8 @@ export default function Home() {
             <div className="flex flex-col gap-6 h-full">
               <div className="relative flex-1 group overflow-hidden rounded-card cursor-pointer">
                 <Image
-                  src={images.gallery2.src}
-                  alt={images.gallery2.alt}
+                  src={images['gallery-2'].src}
+                  alt={images['gallery-2'].alt}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 33vw"
@@ -231,8 +231,8 @@ export default function Home() {
               </div>
               <div className="relative flex-1 group overflow-hidden rounded-card cursor-pointer">
                 <Image
-                  src={images.gallery3.src}
-                  alt={images.gallery3.alt}
+                  src={images['gallery-3'].src}
+                  alt={images['gallery-3'].alt}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 33vw"
