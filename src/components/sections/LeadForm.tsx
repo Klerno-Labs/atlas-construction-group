@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/Label";
@@ -52,15 +51,11 @@ export function LeadForm() {
   return (
     <div className="bg-white p-8 md:p-12 shadow-lg max-w-3xl mx-auto w-full">
       {isSuccess ? (
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center py-12"
-        >
+        <div className="text-center py-12">
           <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
           <h3 className="text-2xl font-bold text-text-heading mb-2">Thank You!</h3>
           <p className="text-text-muted">We&apos;ve received your inquiry and will be in touch within 24 hours.</p>
-        </motion.div>
+        </div>
       ) : (
         <>
           <div className="mb-8 text-center">
