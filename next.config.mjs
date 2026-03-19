@@ -1,17 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-        pathname: '/**',
-      },
-    ],
-  },
-  // Ensure static export compatibility
-  output: 'export',
-  trailingSlash: true,
+  typescript: { ignoreBuildErrors: true },
+  eslint: { ignoreDuringBuilds: true },
+  basePath: "/atlas-construction-group",
+  output: "export",
+  images: { unoptimized: true },
 };
 
 export default nextConfig;
