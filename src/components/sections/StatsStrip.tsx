@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView } from "framer-motion";
 
 const stats = [
   { value: 25, suffix: "+", label: "Years Experience" },
@@ -11,50 +10,50 @@ const stats = [
 ];
 
 function AnimatedStat({ value, suffix, label }: { value: number; suffix: string; label: string }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const ref = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    if (isInView) {
-      const duration = 2000; // 2 seconds
-      const steps = 60;
-      const stepValue = value / steps;
-      let step = 0;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setIsInView(true); },
+      { threshold: 0.3 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
 
-      const timer = setInterval(() => {
-        step++;
-        if (step > steps) {
-          clearInterval(timer);
-          setCurrent(value);
-        } else {
-          setCurrent(Math.floor(stepValue * step));
-        }
-      }, duration / steps);
-
-      return () => clearInterval(timer);
-    }
+  useEffect(() => {
+    if (!isInView) return;
+    const duration = 2000;
+    const steps = 60;
+    const increment = value / steps;
+    let step = 0;
+    const timer = setInterval(() => {
+      step++;
+      setCurrent(Math.min(Math.round(increment * step), value));
+      if (step >= steps) clearInterval(timer);
+    }, duration / steps);
+    return () => clearInterval(timer);
   }, [isInView, value]);
 
   return (
-    <div ref={ref} className="text-center md:text-left">
-      <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+    <div ref={ref} className="text-center">
+      <div className="text-4xl font-bold text-accent">
         {current}{suffix}
       </div>
-      <div className="text-sm uppercase tracking-wider text-accent font-medium">
-        {label}
-      </div>
+      <div className="text-sm text-gray-300 mt-1">{label}</div>
     </div>
   );
 }
 
 export function StatsStrip() {
   return (
-    <section className="bg-primary py-16 border-y border-white/10">
-      <div className="container-custom">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-          {stats.map((stat, index) => (
-            <AnimatedStat key={index} {...stat} />
+    <section className="bg-primary py-16">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map((stat) => (
+            <AnimatedStat key={stat.label} {...stat} />
           ))}
         </div>
       </div>
