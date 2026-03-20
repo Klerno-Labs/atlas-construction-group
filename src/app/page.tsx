@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, HardHat, Building2, Home, Wrench, ShieldCheck, TrendingUp } from "lucide-react";
+import { ArrowRight, HardHat, Building2, Home as HomeIcon, Wrench, ShieldCheck, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { images } from "@/config/images";
 import { siteConfig } from "@/config/site";
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: "Atlas Construction Group delivers industry-leading construction services in Houston. From commercial build-outs to luxury custom homes.",
 };
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       {/* HERO SECTION */}
@@ -127,7 +127,7 @@ export default function Home() {
             {/* Card 2 */}
             <div className="bg-white p-8 border border-gray-100 shadow-card hover:shadow-hover hover:-translate-y-1 transition-all duration-300 rounded-card group">
               <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary mb-6 group-hover:bg-secondary group-hover:text-white transition-colors">
-                <Home className="w-6 h-6" />
+                <HomeIcon className="w-6 h-6" />
               </div>
               <h3 className="font-heading text-xl font-bold text-primary-900 mb-3">
                 Residential Builds
